@@ -29,13 +29,7 @@ public class FileTester {
         }
       }
       in.close();
-      NPolice np = new NPolice();
-      long tick = System.currentTimeMillis();
-      ScoreAndMode result = np.search(grid, police, scooterList);
-      long tock = System.currentTimeMillis();
-      System.out.println("Result: " + result.score + " pts"
-          + ", strategy [" + result.mode + "]"
-          + ", time " + (int)(tock - tick) + " ms");
+      FileTester.test(grid, police, scooterList);
     } catch (FileNotFoundException e) {
       System.err.println("ERROR: File not found.");
       System.exit(1);
@@ -50,6 +44,17 @@ public class FileTester {
     int row = Integer.parseInt(ln.substring(0, comma));
     int col = Integer.parseInt(ln.substring(comma + 1));
     return new Coord(row, col);
+  }
+
+  private static void test(int grid, int police, List<Coord> scooterList) {
+    NPolice np = new NPolice();
+    long tick = System.currentTimeMillis();
+    ScoreAndMode result = np.search(grid, police, scooterList);
+    long tock = System.currentTimeMillis();
+    System.out.println("Result: " + result.score + " pts"
+        + ", strategy [" + result.mode + "]"
+        + ", time " + (int)(tock - tick) + " ms");
+    return;
   }
 
 }
