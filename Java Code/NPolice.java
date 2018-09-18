@@ -35,8 +35,8 @@ public class NPolice {
       return new ScoreAndMode(path.maxPts, "dual search");
     } else {
       this.classicSearch(grid, police, path, grid - police, 0, 0);
+      return new ScoreAndMode(path.maxPts, "classic search");
     }
-    return new ScoreAndMode(path.maxPts, "classic search");
   }
 
   /* -- Classic N-Queen Search Strategy -- */
