@@ -19,20 +19,21 @@ class Used {
   }
 
   public void occupy(int row, int col) {
-    assert (row < this.size && col < this.size);
-    this.rows[row] = true;
-    this.cols[col] = true;
-    this.diag[row + col] = true;
-    this.revD[row - col + this.size - 1] = true;
+    this.mark(row, col, true);
     return;
   }
 
   public void vacate(int row, int col) {
+    this.mark(row, col, false);
+    return;
+  }
+
+  private void mark(int row, int col, boolean flag) {
     assert (row < this.size && col < this.size);
-    this.rows[row] = false;
-    this.cols[col] = false;
-    this.diag[row + col] = false;
-    this.revD[row - col + this.size - 1] = false;
+    this.rows[row] = flag;
+    this.cols[col] = flag;
+    this.diag[row + col] = flag;
+    this.revD[row - col + this.size - 1] = flag;
     return;
   }
 
